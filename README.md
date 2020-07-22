@@ -7,7 +7,7 @@ Testing you tecnical skills
   * Use of React 
   * Use of redux
   * Extra if can show skill with redux-saga-routines
-* You will have to code few example using React with Redux: (your own development env)
+* Live coding using React with Redux:
   * Recreate a section of the HTML / Css of a random webpage using react,
   * Connect front with external API (we will give API doc on the call),
  
