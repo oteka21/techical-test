@@ -34,29 +34,53 @@ const days = [
   "Saturday"
 ];
 
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+  ];
+
 export default function App() {
   const [list, setList] = useState(todos);
 
   const handleTaskClick = todo => {
-    let newTodo;
-    if (todo.complete) {
-      newTodo = { ...todo, complete: false };
-    } else {
-      newTodo = { ...todo, complete: true };
-    }
-    const newList = list.filter(task => task.id !== todo.id);
-    setList([...newList]);
-    setList([newTodo, ...newList]);
+    const newList = [...list];
+    newList[todo].complete = !newList[todo].complete
+    setList(newList);
   };
+  
+  const handleAddTask = () => {
+    const task = window.prompt('Add a new task!');
+    if(!task){
+      return
+    }
+    setList(list => ([...list, {task,complete: false}]))
+  }
 
   const date = new Date();
 
   return (
     <div className="App">
+      <h1>TODO LIST</h1>
       <div className="card">
         <div className="header-container">
-          <div />
-          <div>{days[date.getDay()]}</div>
+          <div className="date-container">
+            <span className="day">{date.getDate()}</span>
+            <div>
+              <div>{months[date.getMonth()].substring(0,4)}</div>
+              <div>{date.getFullYear()}</div>
+            </div>
+          </div>
+          <div>{days[date.getDay()].toUpperCase()}</div>
         </div>
         <div className="todo-list">
           {list.map((todo, index) => {
@@ -64,7 +88,7 @@ export default function App() {
               <div
                 className="task"
                 key={index}
-                onClick={() => handleTaskClick(todo)}
+                onClick={() => handleTaskClick(index)}
               >
                 <p style={{ color: todo.complete ? "#D7D9DE" : "" }}>
                   {todo.task}
@@ -77,6 +101,9 @@ export default function App() {
             );
           })}
         </div>
+        <button type="button" className="plus-button" onClick={handleAddTask}>
+          +
+        </button>
       </div>
     </div>
   );

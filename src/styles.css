@@ -6,15 +6,17 @@
 body,
 * {
   color: #606371;
+  font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
 
 .card {
-  width: 400px;
+  width: 350px;
   margin: 0 auto;
   padding: 50px;
   background: #ffffff;
   border-radius: 3px;
+  position: relative;
   -webkit-box-shadow: 4px 2px 25px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 4px 2px 25px -4px rgba(0, 0, 0, 0.75);
   box-shadow: 4px 2px 25px -4px rgba(0, 0, 0, 0.75);
@@ -40,4 +42,36 @@ body,
   display: inline-block;
   border-radius: 50%;
   border: 2px solid #edeff4;
+}
+
+.plus-button{
+  border: 0;
+  width: 80px;
+  height: 80px;
+  font-size: 30px;
+  border-radius: 50%;
+  background: #7cdfa9;
+  position: absolute;
+  left: calc(50% - 40px);
+  bottom: calc(0% - 40px);
+  color: #69BB8F;
+  cursor: pointer;
+  outline: none;
+}
+
+.plus-button:active,.task:active {
+  transform: translateY(1px);
+}
+
+.date-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  font-weight: bold;
+}
+
+.day{
+  font-size: 25px;
+  display: inline-block;
+  transform: scale(1,1.6) translateY(4px);
 }
